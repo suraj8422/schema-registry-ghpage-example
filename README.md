@@ -1,0 +1,1 @@
+# schema-registry-ghpage-example
