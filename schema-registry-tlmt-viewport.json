@@ -1,0 +1,693 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Schema_Registry_Tlmt_View_Port",
+    "version": ""
+  },
+  "tags": [
+    {
+      "name": "inputResponseContent",
+      "x-displayName": "inputResponseContentDisplayName",
+      "description": "This event represents data calculated given over the course of a playback session.\n\ntype: <replace with input response urn>\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/inputResponseContent\" />"
+    },
+    {
+      "name": "interactionResponseContent",
+      "x-displayName": "interactionResponseContentDisplayName",
+      "description": "This event represents data calculated given over the course of a playback session.\n\ntype: <replace with input response urn>\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/interactionResponseContent\" />"
+    }
+  ],
+  "paths": {},
+  "components": {
+    "schemas": {
+      "ActionType": {
+        "type": "string"
+      },
+      "BackgroundAssetType": {
+        "type": "string"
+      },
+      "BywSeedTitle": {
+        "type": "object",
+        "description": "This object contains the different variables that are required for all details related to the Because You Watched Seed Title.\n           -- Example Format --\n          e.g. [{contentTitle: \u0027Because You Watched Jack\u0027, language: \u0027en\u0027}]",
+        "properties": {
+          "contentTitle": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          }
+        }
+      },
+      "ConsentState": {
+        "type": "string",
+        "description": "Only present on Web Indicator of CMP consent preferences.  The 5 consent states the user is opted in to."
+      },
+      "ContainerType": {
+        "type": "string",
+        "description": "The type of container.  Must be one of the below values-\n          shelf is a horizontal-scrolling container that renders clickable content tiles. You cannot scroll past the end.\n          carousel is the same a shelf, except scrolling past the end \u0027wraps you around\u0027 back to the 1st tile.\n          grid is a vertical-scrolling container that renders clickable content tiles. It does not contain individual carousels.  i.e. Movies/Series landing pages are grids.\n          menu_list is a container that renders a list of clickable options  i.e. nav bar, genre picker, play/add to watchlist buttons, suggested/extras/details buttons, suggested search terms.\n          cta_button is a container that renders CTA buttons that allow a user to proceed and move forward from a page (i.e. buy now, agree \u0026 continue, confirming a premier access purchase, etc...)\n          footer is a container that includes the various footer links found on all onboarding pages (i.e. Privacy Policy, Do Not Sell My Info, etc...)\n          overlay is a container that loads over an existing pageView rather than having another pageView fire as a new screen (i.e. Purchase Confirmed screen on Web, Email Not Recognized Modal on Account Log In flow, New Email Sent on Password Reset flow, etc...)\n          form is a container that renders various input-related items or buttons i.e. input_form for search or Onboarding, check box or toggle.\n          nav_button is a container that contains the down arrow on the web MLP, splash, or the back button (left arrow) on IAP onboarding screens.\n          mlp_log_in is the container on the MLP that captures the floating \u0027Log In\u0027 link on the upper right (which expands to \u0027Sign Up Now\u0027 as a user scrolls down the MLP)\n          mlp_body is the container on the MLP that stretches from just below the down arrow to just above the footer links. This container is intended to allow us to capture each messaging as invisible elements for scroll depth tracking purposes.\n          onboarding_paywall is a container on the paywall that includes payment type selection and on bundle flows, monthly and annual plan selection or the plan selection CTA buttons on IAP.\n          onboarding_payment_info is a container on the paywall that includes the payment info fields on web.\n          plan_picker is the container on the plan selection screen as part of the Pittsburgh Early Access MLP Purchase Flow.\n          license_plate_code is the container holding the numerical code on the license plate screen of select connected devices for off-device sign up and log in flows.\n          text is the container holding non clickable text in the app (i.e. content summaries or restricted text on details / collections pages)\n          sca_modal is the container that contains the Strong Customer Authentication modal that appears after a user submits their payment info in EU countries.\n          splash_log_in is the container on the splash page that captures the floating \u0027Log In\u0027 link on the upper right (which expands to \u0027Sign Up Now\u0027 as a user scrolls down the splash page)\n          splash_body is the container on the splash page that stretches from just below the down arrow to just above the footer links. This container is intended to allow us to capture each messaging as invisible elements for scroll depth tracking purposes.\n          hero is the new generic containerType that will be used for all containers with type of HeroContainer or HeroFullBleedContainer instead of carousel. containerStyle will be used to distinguish the types of hero.\n          ledger is the new generic containerType that will be used for all containers that ask users to confirm billing details and agree to a specific subscription, whether it be a net new subscription or a change in subscription."
+      },
+      "ContentKeys": {
+        "type": "object",
+        "description": "\u0027KVPs encompassing these: CollectionId, ProgramId, FamilyId, ContentId, SeriesId, MediaId values.\u0027\n          If pageName value references an Onboarding screen, contentKeys values for each of the below properties should be null.\n          (Onboarding screens have pageName values that are not \u0027collection\u0027, \u0027movie_details\u0027, \u0027series_details\u0027, \u0027video_player\u0027, \u0027whos_watching\u0027, \u0027add_profile\u0027, \u0027edit_profile\u0027)\n          If pageName value references \u0027host_groupwatch_room\u0027, \u0027host_groupwatch_invite_link_modal\u0027, \u0027guest_groupwatch_room\u0027, contentKeys values should reflect the content that the group is streaming.\n          (GroupWatch screens have pageName values that contain \u0027groupwatch\u0027)\n",
+        "properties": {
+          "collectionId": {
+            "type": "string"
+          },
+          "programId": {
+            "type": "string"
+          },
+          "encodedFamilyId": {
+            "type": "string"
+          },
+          "contentId": {
+            "type": "string"
+          },
+          "encodedSeriesId": {
+            "type": "string"
+          },
+          "mediaId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "superEventId": {
+            "type": "string"
+          },
+          "sportId": {
+            "type": "string"
+          },
+          "leagueId": {
+            "type": "string"
+          },
+          "teamId": {
+            "type": "string"
+          },
+          "channelId": {
+            "type": "string"
+          },
+          "entityId": {
+            "type": "string"
+          },
+          "entityType": {
+            "type": "string"
+          },
+          "alidId": {
+            "type": "string"
+          },
+          "availId": {
+            "type": "string"
+          }
+        }
+      },
+      "DeviceProfile": {
+        "type": "string",
+        "description": "This will be the connected device type that is displaying the license plate screen for the user to enter the code on web when pageName \u003d sign_up_enter_code or log_in_enter_code for off-device sign up and log in flows.\n          This field should be passed by the Web client."
+      },
+      "Direction": {
+        "type": "string",
+        "description": "This describes the direction in which a certain interaction is made. This varibale can be used hand-in-hand with the interactionType variable to determine which way a user\n      scrolled."
+      },
+      "ElementType": {
+        "type": "string",
+        "description": "The type of the element in FED terms.  Must be one of the below values-\n          button is any clickable button. Note- there is significant business interest to track clicks to Play or Resume.\n          tile is a clickable content tile, regardless of intent. Clickable content tiles include any clickable items in a set, whether it be a collection, series, movie, program.\n          suggested search terms should be buttons.\n          (e.g. nav to content page vs. playback start -- elementType is \u0027tile\u0027 for both). Differences in how the user interacts with a tile (e.g. click, focus) are defined in interactionType\n          menu_item is a static item to be picked from a list.\n          background-video is the full-bleed video that is present on navigational screens.\n          text_detail is non clickable text in the app (i.e. content summaries or restricted text on details pages)\n          arrow_prev is the arrow that exists on the web app where a user can scroll left of the hero or a container.\n          arrow_next is the arrow that exists on the web app where a user can scroll right of the hero or a container.\n          arrow_down is the arrow that exists on the web app where a user can scroll below the fold.\n          arrow_up is the arrow that exists on the web app where a user can scroll above the fold.\n          input_form is a field that a user can input a value into that will be submitted  e.g. search bar\n          invisible is used for clickable elements in the app/video player that are not visible to the user (i.e the \u0027play\u0027 button\n          which is clicked as a result of a deepink into the video player would have elementType \u003d \u0027invisible\u0027,\n          the \u0027join_stream\u0027 button that is clicked by a groupwatch guest as a result of the a host clicking \u0027join_stream\u0027 while the user is waiting in the room would have elementType \u003d \u0027invisible\u0027,\n          the \u0027play\u0027 button that is clicked by a groupwatch guest as a result of the a host clicking \u0027play\u0027 while the user is waiting on the up_next screen would have elementType \u003d \u0027invisible\u0027)"
+      },
+      "ElementViewDetail": {
+        "type": "object",
+        "description": "This object contains the different variables that are required for all element related details. These variables will be used by Data Architecture\n      to generate the elementViewId.",
+        "properties": {
+          "elementId": {
+            "type": "string"
+          },
+          "elementIdType": {
+            "type": "string"
+          },
+          "elementIndex": {
+            "type": "number"
+          },
+          "browseItemId": {
+            "type": "string",
+            "description": "Fully qualified identifier (FQID) for the object backing the item. Generally this is EVA Entity id, but can be\n    Polaris collection information, Maestro Pages and in future could contain other types of ‘content’."
+          },
+          "browseEntityId": {
+            "type": "string",
+            "description": "The EVA entity id. Only relevant for content-specific items. Example value: 38c1eef7-aa8b-4fa4-8bdc-88e596ea565f"
+          },
+          "browsePrimaryActionType": {
+            "$ref": "#/components/schemas/ActionType"
+          },
+          "browsePrimaryActionTargetId": {
+            "type": "string",
+            "description": "Fully qualified identifier (FQID) of the object the action is performed upon. This can differ from the item\n    the action is attached to. For example, an item might reference a series, but the play button will play a specific episode.\n    Example value: urn:eva:alid:38c1eef7-aa8b-4fa4-8bdc-88e596ea565f"
+          }
+        }
+      },
+      "EnvironmentData": {
+        "type": "object",
+        "description": "Data about the environment an application is running in",
+        "properties": {
+          "sdkVersion": {
+            "type": "string",
+            "description": "The version of the DSS SDK as used in the application integrated on the device"
+          },
+          "sdkPlatform": {
+            "type": "string",
+            "description": "The SDK platform"
+          },
+          "sdkDevicePlatform": {
+            "type": "string",
+            "description": "The SDK Platform as defined here : https://wiki.disneystreaming.com/pages/viewpage.action?spaceKey\u003dSDKC\u0026title\u003dSDK+Platform+Values+Reporting+Documentation"
+          },
+          "deviceOSVersion": {
+            "type": "string",
+            "description": "The device operating system version"
+          },
+          "deviceModel": {
+            "type": "string",
+            "description": "The device model"
+          },
+          "deviceModelFamily": {
+            "type": "string",
+            "description": "Grouping of device model (where applicable for a given platform)"
+          },
+          "devicePlatformId": {
+            "type": "string",
+            "description": "The platformId value on the SDKs is derived from the SDK configs, which is used\n    by the Playlist Service to return the plt in Conviva data, which they retrieve from\n    the token, which likely receives its value from the device grant metadata.\n    The following wiki documents how this value is generated across each SDK platform:\n    https://wiki.disneystreaming.com/display/SDKC/SDK+Platform+Values+Reporting+Documentation "
+          },
+          "deviceBrand": {
+            "type": "string",
+            "description": "The brand of the device"
+          },
+          "applicationId": {
+            "type": "string",
+            "description": "The application identifier. Also know as bundle identifier"
+          },
+          "applicationName": {
+            "type": "string",
+            "description": "The product name of the application"
+          },
+          "applicationVersion": {
+            "type": "string",
+            "description": "The version of the running application"
+          },
+          "applicationAdkVersion": {
+            "type": "string",
+            "description": "The ADK version of the running application. This is only applicable for the NCP platform."
+          },
+          "browser": {
+            "type": "string",
+            "description": "The name of the browser being used to run the application"
+          },
+          "browserVersion": {
+            "type": "string",
+            "description": "The version of the browser being used to run the application"
+          },
+          "adkDeviceId": {
+            "type": "string",
+            "description": "Unique identifier for the ADK device. This is only applicable for ADK partner devices on NCP."
+          }
+        }
+      },
+      "ExperimentPlatform": {
+        "type": "string",
+        "description": "Name of testing platform used to run A/B tests, primarily on Marketing Landing Pages (MLPs)"
+      },
+      "ExperimentsDetails": {
+        "type": "object",
+        "description": "This object contains the different variables that are required for experimentKeys when \u003e\u003d 1 experiment is in progress.",
+        "properties": {
+          "experimentPlatform": {
+            "$ref": "#/components/schemas/ExperimentPlatform"
+          },
+          "experimentFeatureId": {
+            "type": "string",
+            "description": "The experiment ID value generated by Optimizely or the feature ID value generated by Weapon X."
+          },
+          "experimentId": {
+            "type": "string",
+            "description": "This value will replicate the experiment ID value generated by Optimizely or the feature ID value generated by Weapon X."
+          },
+          "variantId": {
+            "type": "string",
+            "description": "The variation ID value generated by Optimizely or the variant ID value generated by Weapon X."
+          }
+        }
+      },
+      "InputType": {
+        "type": "string",
+        "description": "The input being used to interact with the UI.  Should be one of the values below.\n      checkbox is when a user changes the state of a checkbox.\n      toggle is when a user changes the state of a toggle.  Defined here in inputType because toggles are often inputs.\n      input_form is when a user types a character or string into a form (i.e. search bar or profile name edit)\n      select is used when multiple input actions are possible on a given element with selection type input used to make the changes to element state i.e. Viewing Environments controls on Apple Vision Pro."
+      },
+      "InteractionType": {
+        "type": "string",
+        "description": "The description of the interaction.  It must be one of the values defined below.  Contact DGI if a new value must be added\n      to pass validation.\n      select on AAW (Apple, Android, Web) is the click of an Element.\n      focus on CD (Connected Devices) is the focus on an Element.  Doing a focus to an Element that is still a focus event (vs. a scroll-* event).\n      scroll-* events are on AAW only and fire on the completion of the scroll action. If an element or container is scrolled past, once the scroll is completed,\n      those elements or containers should be included in the payload. FED concern- tracking as each element comes into view is heavy (edge case- scrolling thru the entire Simpsons series [30+ seasons]).\n      The payload for interaction scroll events should include all containerViewIds that were in view or scrolled by until the completion of the scroll action.\n      deeplink refers to external links that land users in the app (such as a Video Player or Content Details screen)\n      autoplay is when a Video Player automatically plays a video (dependent on video, how a user landed on the video, geo, etc...)\n      play_button may trigger an alternate navigation path.\n      As opposed to `select`, which may lead you to details. Clicking the play/pause button on a CD remote may lead you directly into playback.\n      long_press may trigger an alternate navigation path.\n      For example, on an episode cell it may bring you to the details page instead of directly into playback.\n      two_finger_tap is when a user taps on a cell with two fingers instead of one. This can result in different behavor than `select`.\n      For example, going directly to playback instead of details.\n      guest_autoplay is when a guest in a groupwatch is automatically brought into the video player without selecting anything.\n      For example, this can occur when the guest is waiting in the room for the stream to start or on the group watch play next episode screen.\n      long_press_play_button is when a user long presses the play button (i.e. holds it down) on a bookmark tile (e.g. Continue Watching or an episode tile on details).\n      This may trigger an alternate navigation path. As opposed to `play_button`, which may lead you to straight into playback from a bookmarked point,\n      long pressing the play/pause button on a CD remote may lead you directly into playback from the beginning of the video.\n      invisible is an inferred interactionType for when a user interacts with an element with no explicit action button (e.g. successful entry of the PIN on the enter_profile_pin screen)"
+      },
+      "PartnerEnum": {
+        "type": "string",
+        "description": "The partner identifier. An event is always only relevant in a single partner namespace."
+      },
+      "Platform": {
+        "type": "string",
+        "description": "Platform Identifier - Unique to each client team. This field is a pass-through from the Playlist Service response, so SDK does not control the name or value."
+      },
+      "PlayMode": {
+        "type": "string",
+        "description": "Play mode identifier for Nintendo Switch."
+      },
+      "SessionType": {
+        "type": "string"
+      },
+      "SourceStream": {
+        "type": "string"
+      },
+      "inputResponseContent": {
+        "type": "object",
+        "description": "input allows us to know whenever a user inputs anything into the app. An input event is fired once the user stops\n    typing for a certain amount of time (200 milliseconds) or changes the state of checkbox or toggle.\n    After the user has stopped typing for 200ms, the event should fire with whatever is in the search input_form element.\n    Examples of this are typing in the Search Container or if the user is updating their Profile Name.\n    -- Examples --\n    - user types \u0027Frozen\u0027 into the search browser, waits 201 ms, 1 event should fire with the entire string \u0027Frozen\u0027.\n    - if a user types \u0027Sta\u0027, waits 199ms, then types \u0027r\u0027, and waits 201ms, 1 event will fire with \u0027Star\u0027. If the user then deletes \u0027r\u0027 and waits 201ms,\n    1 event should fire with the string \u0027Sta\u0027.",
+        "properties": {
+          "environmentData": {
+            "$ref": "#/components/schemas/EnvironmentData"
+          },
+          "userAgent": {
+            "type": "string",
+            "description": "The User Agent associated with the client.\n    Example: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0 Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0"
+          },
+          "deviceId": {
+            "type": "string",
+            "description": "Device Identifier"
+          },
+          "profileId": {
+            "type": "string",
+            "description": "Id of the user profile generating event"
+          },
+          "accountId": {
+            "type": "string",
+            "description": "Id of the account generating event"
+          },
+          "ipAddress": {
+            "type": "string",
+            "maxLength": 15,
+            "minLength": 8,
+            "description": "The Ip address associated with the client"
+          },
+          "sessionId": {
+            "type": "string"
+          },
+          "locationCountryCode": {
+            "type": "string",
+            "description": "Session token country code. ISO 639-1 Alpha-2 code"
+          },
+          "locationZipCode": {
+            "type": "string",
+            "description": "Session token zip code"
+          },
+          "acceptedAtTimestamp": {
+            "type": "number",
+            "format": "double"
+          },
+          "kidsModeEnabled": {
+            "type": "boolean",
+            "description": "When true, kids mode is enabled (child profile is active). This information may be used for legal, data processing and other purposes."
+          },
+          "sessionType": {
+            "$ref": "#/components/schemas/SessionType"
+          },
+          "correctedClientTimestamp": {
+            "type": "number",
+            "description": "Timestamp corrected at edge due to client timestamp issues. ISO 8601/RFC 3339 as defined in https://github.bamtech.co/api-services-eng/client-event-sync-service/pull/803/",
+            "format": "double"
+          },
+          "inputType": {
+            "$ref": "#/components/schemas/InputType"
+          },
+          "pageViewId": {
+            "type": "string"
+          },
+          "appVersion": {
+            "type": "string",
+            "description": "The version of the running application"
+          },
+          "backgroundAssetType": {
+            "$ref": "#/components/schemas/BackgroundAssetType"
+          },
+          "verticalPosition": {
+            "type": "number",
+            "description": "Numeric value representing the vertical position of a container or elements parent container on a page, using 0-index"
+          },
+          "groupId": {
+            "type": "string"
+          },
+          "consentStates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConsentState"
+            },
+            "description": "Only present on Web Indicator of CMP consent preferences.  Array of which mix of the 4 consent states the user is opted in to. PLEASE NOTE: consentState is required for Web only."
+          },
+          "experimentKeys": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The optional universal token. see [Content Token](https://wiki.bamtechmedia.com/display/PER/Universal+Token+Implementation+Plan)"
+            },
+            "description": "Object containing the experimentToken that is used to carry Brazos experiment metadata for personalized content recommendations"
+          },
+          "containerStyle": {
+            "type": "string",
+            "description": "Informs the style (UI rendering) of any Tile within a collection set and any special logic applied to their outer container.\n          Documentation and a mapping of container use cases to a relevant containerStyle can be found here: https://github.bamtech.co/pages/fed-solutions/documentation/star+/"
+          },
+          "isAuthenticated": {
+            "type": "boolean",
+            "description": "Identifies if the user is authenticated or not"
+          },
+          "partner": {
+            "$ref": "#/components/schemas/PartnerEnum"
+          },
+          "elements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ElementViewDetail"
+            },
+            "description": "Array of Elements that are shown in the current ContainerView. If any 1 pixel of the Element is shown (i.e. peeking only),\n      it should be in this Array. Array should contain the corresponding elementId, elementIdType, elementIndex, and mediaFormatType for each element shown\n      -- Example Format --\n      e.g. [ { elementId: \u0027aaa-bbb\u0027, elementIdType: \u0027contentId\u0027, elementIndex: 3, mediaFormatType: \u0027Airing\u0027},\n             { elementId: \u0027ccc-ddd\u0027, elementIdType: \u0027encodedFamilyId\u0027, elementIndex: 4, mediaFormatType: \u0027DmcVideo\u0027}]"
+          },
+          "pageId": {
+            "type": "string"
+          },
+          "pageKey": {
+            "type": "string",
+            "description": "Key associated with the page being loaded/viewed. This key is unique to the page, but is not unique to the user\u0027s view of the page.\n          It is not unique to a specific user. e.g. VJ and his daughter will both have the same pageKey when they are on the pixar collection page.\n          For Polaris Collections, the collectionGroupKey of the page should be used. For non-Polaris events, encodedFamilyId (for movies and sporting events),\n          encodedSeriesId or a hardcoded value (e.g. account_settings). For video_player pages, the contentId should be passed.\n          should be used.\n          For MLPs, the modalId should be used as the pageKey on modal pages that originate from MLP modal links (when pageName is mlp_modal)."
+          },
+          "inputValue": {
+            "type": "string",
+            "description": "The value of the input field at the instance of the event.  e.g. the  value of the user\u0027s search input.\n        inputValue toggle is enum of \u0027on\u0027 or \u0027off\u0027\n        inputValue checkbox is enum of \u0027on\u0027 or \u0027off\u0027\n        inputValue onboarding form is \u0027validSyntax\u0027 or \u0027invalidSyntax\u0027\n        inputValue input_form is the value of the user\u0027s search input. An event should fire once they stop typing for a certain amount of time (200 milliseconds).\n        i.e user types \u0027Frozen\u0027 into the search browser, waits 201 ms, 1 event should fire with the entire string \u0027Frozen\u0027.\n        If inputValue matches the pattern `*@*.*`, the inputValue should be replaced with `\u003credacted\u003e` to avoid capturing PII inadvertently entered into input fields.\n        Examples of this PII pattern include\n        Joseph.bird@disney.com\n        Joseph.bird@disney.it\n        Joseph.bird@disney.com:password123\n        inputValue radio_button is enum of \u0027on\u0027 or \u0027off\u0027\n        inputValue input_form for onboarding_sk_info age verification is enum of \u0027validAge\u0027 or \u0027invalidAge\u0027"
+          },
+          "activitySessionId": {
+            "type": "string"
+          },
+          "horizontalPosition": {
+            "type": "number",
+            "description": "Numeric value representing the vertical position of a container or elements parent container on a page, using 0-index"
+          },
+          "experiments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExperimentsDetails"
+            },
+            "description": "\n  This field should capture both the experiementPlatform as well as the corresponding id values (i.e. experiementId for optimizely or featureId for weapon_x as well as well as the experimentId for both platforms that would duplicative of the experimentFeatureId and the variantId that a user saw).\n  This field is for Optimizely and Weapon X experiments. All experiements that are present should be captured.\n  -- Examples --\n  e.g. [\n        {\"experimentPlatform\": \"optimizely\", \"experimentFeatureId\": \"17880411119\", \"experimentId\": \"17880411119\" \"VariantId\": \"17885411140\"}\n        ]\n  e.g. [\n        {\"experimentPlatform\": \"weapon_x\", \"experimentfeatureId\": \"0737ad0d-17e3-46d2-9fab-57f841d6caff\u0026\u0026AA-test11\", \"experimentId\": \"0737ad0d-17e3-46d2-9fab-57f841d6caff\u0026\u0026AA-test11\", \"variantId\": \"control\"},\n        {\"experimentPlatform\": \"weapon_x\", \"experimentfeatureId\": \"0148ac0c-17e3-46d2-9fab-57f841d6caff\u0026\u0026AB-test23\", \"experimentId\": \"0148ac0c-17e3-46d2-9fab-57f841d6caff\u0026\u0026AB-test23\", \"variantId\": \"control\"}\n        ]\n"
+          },
+          "deviceProfile": {
+            "$ref": "#/components/schemas/DeviceProfile"
+          },
+          "pageName": {
+            "type": "string",
+            "description": "The name of the page being loaded or viewed. Examples: explore, video_player.\n                  There is a split authority for source of data --\n                  explore (uses infoblock provided value; ignored client) vs\n                  non explore (uses client provided value)"
+          },
+          "inputId": {
+            "type": "string"
+          },
+          "elementIdType": {
+            "type": "string"
+          },
+          "appName": {
+            "type": "string",
+            "description": "Identification of the application. E.g. ESPN+, Disney+ etc."
+          },
+          "parentContainerViewId": {
+            "type": "string"
+          },
+          "elementIndex": {
+            "type": "number",
+            "description": "Numeric value representing the index position of an element within a container, using 0-index"
+          },
+          "bywSeedTitle": {
+            "$ref": "#/components/schemas/BywSeedTitle"
+          },
+          "timestamp": {
+            "type": "number",
+            "format": "double"
+          },
+          "elementId": {
+            "type": "string"
+          },
+          "backgroundAsset": {
+            "type": "string"
+          },
+          "contentKeys": {
+            "$ref": "#/components/schemas/ContentKeys"
+          },
+          "containerViewId": {
+            "type": "string"
+          },
+          "containerKey": {
+            "type": "string"
+          },
+          "elementType": {
+            "$ref": "#/components/schemas/ElementType"
+          },
+          "containerType": {
+            "$ref": "#/components/schemas/ContainerType"
+          },
+          "elementName": {
+            "type": "string",
+            "description": "The name of the rendered UI element. Examples: play, continue, agree_\u0026_continue.\n                  There is a split authority for source of data --\n                  explore (uses infoblock provided value; ignored client) vs\n                  non explore (uses client provided value)"
+          },
+          "platform": {
+            "$ref": "#/components/schemas/Platform"
+          },
+          "sourceStream": {
+            "$ref": "#/components/schemas/SourceStream"
+          },
+          "dataVersion": {
+            "type": "string",
+            "description": "Schema version of the data payload"
+          },
+          "eventId": {
+            "type": "string",
+            "description": "Event id as UUID"
+          },
+          "viewingEnvironment": {
+            "type": "string",
+            "description": "Viewing environments are 360 degree immersive spaces that transport the user into a full screen disney experience. For MVP launch we will have five brand-specific Viewing Environments backdrops: Disney, Star Wars, Marvel, Pixar, National Geographic.\n\n                How will this field be provided?\n                By client \u003e SDK \u003e Glimpse \u003e Viewport\n\n                ex. disney, star_wars, marvel, pixar, nat_geo, default"
+          }
+        }
+      },
+      "interactionResponseContent": {
+        "type": "object",
+        "description": "Interaction allows us to know when a user interacts with the app.  interaction events occur on Elements, not Containers or Pages.\n    -- Examples --\n    - Hovering, clicking, focusing, deeplinking or even hitting the back button on a device.\n    The containerViewId passed should always correspond to the containerView instance of the element that was interacted with. The parent/child relationship\n    of containers and interactions is made through the containerViewId and the elementId.\n        - Please Reference Example here: https://github.bamtech.co/pages/fed-solutions/documentation/data/glimpse.html#example-2-scrolling-and-interacting-with-a-specific-container\n",
+        "properties": {
+          "environmentData": {
+            "$ref": "#/components/schemas/EnvironmentData"
+          },
+          "userAgent": {
+            "type": "string",
+            "description": "The User Agent associated with the client.\n    Example: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0 Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0"
+          },
+          "deviceId": {
+            "type": "string",
+            "description": "Device Identifier"
+          },
+          "profileId": {
+            "type": "string",
+            "description": "Id of the user profile generating event"
+          },
+          "accountId": {
+            "type": "string",
+            "description": "Id of the account generating event"
+          },
+          "ipAddress": {
+            "type": "string",
+            "maxLength": 15,
+            "minLength": 8,
+            "description": "The Ip address associated with the client"
+          },
+          "sessionId": {
+            "type": "string"
+          },
+          "locationCountryCode": {
+            "type": "string",
+            "description": "Session token country code. ISO 639-1 Alpha-2 code"
+          },
+          "locationZipCode": {
+            "type": "string",
+            "description": "Session token zip code"
+          },
+          "acceptedAtTimestamp": {
+            "type": "number",
+            "format": "double"
+          },
+          "kidsModeEnabled": {
+            "type": "boolean",
+            "description": "When true, kids mode is enabled (child profile is active). This information may be used for legal, data processing and other purposes."
+          },
+          "sessionType": {
+            "$ref": "#/components/schemas/SessionType"
+          },
+          "correctedClientTimestamp": {
+            "type": "number",
+            "description": "Timestamp corrected at edge due to client timestamp issues. ISO 8601/RFC 3339 as defined in https://github.bamtech.co/api-services-eng/client-event-sync-service/pull/803/",
+            "format": "double"
+          },
+          "programType": {
+            "type": "string",
+            "description": "\u0027Identifies the type of program that the content falls under.\n          Non DmcVideo or Airing objects (i.e. Collection Tiles, Series Tiles/Buttons, up_next_extra_action button and input fields)\n          will have a contentType of \u0027other\u0027.\u0027\n          \u0027DmcVideo objects include: Movie Tiles, Episode Tiles, Shorts Tiles, \u0027Continue Watching\u0027 Tiles, Shorts/Movies/Episode tiles on the\n          suggested and extras sections, play and start_from_beginning buttons, add_to_watchlist/remove_from_watchlist on Movies and Episodes\u0027\n          \u0027Airing objects include: Live and Live Linear Event Tiles\u0027\n          \u0027These values should come from search. Please use this link to see available values:\n          https://github.bamtech.co/pages/fed-solutions/documentation/content/assets.html#sub-types\u0027"
+          },
+          "direction": {
+            "$ref": "#/components/schemas/Direction"
+          },
+          "elementName": {
+            "type": "string",
+            "description": "The name of the rendered UI element. Examples: play, continue, agree_\u0026_continue.\n                  There is a split authority for source of data --\n                  explore (uses infoblock provided value; ignored client) vs\n                  non explore (uses client provided value)"
+          },
+          "pageViewId": {
+            "type": "string"
+          },
+          "appVersion": {
+            "type": "string",
+            "description": "The version of the running application"
+          },
+          "deviceProfile": {
+            "$ref": "#/components/schemas/DeviceProfile"
+          },
+          "isAuthenticated": {
+            "type": "boolean",
+            "description": "Identifies if the user is authenticated or not"
+          },
+          "backgroundAssetType": {
+            "$ref": "#/components/schemas/BackgroundAssetType"
+          },
+          "elementId": {
+            "type": "string"
+          },
+          "experimentKeys": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The optional universal token. see [Content Token](https://wiki.bamtechmedia.com/display/PER/Universal+Token+Implementation+Plan)"
+            },
+            "description": "Object containing the experimentToken that is used to carry Brazos experiment metadata for personalized content recommendations"
+          },
+          "contentType": {
+            "type": "string",
+            "description": "\u0027Identifies the type of content being linked to from the Element.\n          Non DmcVideo or Airing objects (i.e. Collection Tiles, Series Tiles/Buttons, up_next_extra_action button and input fields)\n          will have a contentType of \u0027other\u0027.\n          \u0027DmcVideo objects include: Movie Tiles, Episode Tiles, Shorts Tiles, \u0027Continue Watching\u0027 Tiles, Shorts/Movies/Episode tiles on the\n          suggested and extras sections, play and start_from_beginning buttons, add_to_watchlist/remove_from_watchlist on Movies and Episodes\u0027\n          \u0027Airing objects include: Live and Live Linear Event Tiles\u0027\n          \u0027These values should come from search. Please use this link to see available values:\n          https://github.bamtech.co/pages/fed-solutions/documentation/content/assets.html#sub-types\u0027"
+          },
+          "timestamp": {
+            "type": "number",
+            "format": "double"
+          },
+          "verticalPosition": {
+            "type": "number",
+            "description": "Numeric value representing the vertical position of a container or elements parent container on a page, using 0-index"
+          },
+          "backgroundAsset": {
+            "type": "string"
+          },
+          "elementIdType": {
+            "type": "string"
+          },
+          "elementType": {
+            "$ref": "#/components/schemas/ElementType"
+          },
+          "parentContainerViewId": {
+            "type": "string"
+          },
+          "consentStates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConsentState"
+            },
+            "description": "Only present on Web Indicator of CMP consent preferences.  Array of which mix of the 4 consent states the user is opted in to. PLEASE NOTE: consentState is required for Web only."
+          },
+          "experiments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExperimentsDetails"
+            },
+            "description": "\n  This field should capture both the experiementPlatform as well as the corresponding id values (i.e. experiementId for optimizely or featureId for weapon_x as well as well as the experimentId for both platforms that would duplicative of the experimentFeatureId and the variantId that a user saw).\n  This field is for Optimizely and Weapon X experiments. All experiements that are present should be captured.\n  -- Examples --\n  e.g. [\n        {\"experimentPlatform\": \"optimizely\", \"experimentFeatureId\": \"17880411119\", \"experimentId\": \"17880411119\" \"VariantId\": \"17885411140\"}\n        ]\n  e.g. [\n        {\"experimentPlatform\": \"weapon_x\", \"experimentfeatureId\": \"0737ad0d-17e3-46d2-9fab-57f841d6caff\u0026\u0026AA-test11\", \"experimentId\": \"0737ad0d-17e3-46d2-9fab-57f841d6caff\u0026\u0026AA-test11\", \"variantId\": \"control\"},\n        {\"experimentPlatform\": \"weapon_x\", \"experimentfeatureId\": \"0148ac0c-17e3-46d2-9fab-57f841d6caff\u0026\u0026AB-test23\", \"experimentId\": \"0148ac0c-17e3-46d2-9fab-57f841d6caff\u0026\u0026AB-test23\", \"variantId\": \"control\"}\n        ]\n"
+          },
+          "pageId": {
+            "type": "string"
+          },
+          "appName": {
+            "type": "string",
+            "description": "Identification of the application. E.g. ESPN+, Disney+ etc."
+          },
+          "groupId": {
+            "type": "string"
+          },
+          "pageName": {
+            "type": "string",
+            "description": "The name of the page being loaded or viewed. Examples: explore, video_player.\n                  There is a split authority for source of data --\n                  explore (uses infoblock provided value; ignored client) vs\n                  non explore (uses client provided value)"
+          },
+          "platform": {
+            "$ref": "#/components/schemas/Platform"
+          },
+          "containerViewId": {
+            "type": "string"
+          },
+          "horizontalPosition": {
+            "type": "number",
+            "description": "Numeric value representing the vertical position of a container or elements parent container on a page, using 0-index"
+          },
+          "bywSeedTitle": {
+            "$ref": "#/components/schemas/BywSeedTitle"
+          },
+          "containerStyle": {
+            "type": "string",
+            "description": "Informs the style (UI rendering) of any Tile within a collection set and any special logic applied to their outer container.\n          Documentation and a mapping of container use cases to a relevant containerStyle can be found here: https://github.bamtech.co/pages/fed-solutions/documentation/star+/"
+          },
+          "containerKey": {
+            "type": "string"
+          },
+          "playMode": {
+            "$ref": "#/components/schemas/PlayMode"
+          },
+          "elements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ElementViewDetail"
+            },
+            "description": "Array of Elements that are shown in the current ContainerView. If any 1 pixel of the Element is shown (i.e. peeking only),\n      it should be in this Array. Array should contain the corresponding elementId, elementIdType, elementIndex, and mediaFormatType for each element shown\n      -- Example Format --\n      e.g. [ { elementId: \u0027aaa-bbb\u0027, elementIdType: \u0027contentId\u0027, elementIndex: 3, mediaFormatType: \u0027Airing\u0027},\n             { elementId: \u0027ccc-ddd\u0027, elementIdType: \u0027encodedFamilyId\u0027, elementIndex: 4, mediaFormatType: \u0027DmcVideo\u0027}]"
+          },
+          "contentKeys": {
+            "$ref": "#/components/schemas/ContentKeys"
+          },
+          "partner": {
+            "$ref": "#/components/schemas/PartnerEnum"
+          },
+          "interactionType": {
+            "$ref": "#/components/schemas/InteractionType"
+          },
+          "activitySessionId": {
+            "type": "string"
+          },
+          "elementIndex": {
+            "type": "number",
+            "description": "Numeric value representing the index position of an element within a container, using 0-index"
+          },
+          "pageKey": {
+            "type": "string",
+            "description": "Key associated with the page being loaded/viewed. This key is unique to the page, but is not unique to the user\u0027s view of the page.\n          It is not unique to a specific user. e.g. VJ and his daughter will both have the same pageKey when they are on the pixar collection page.\n          For Polaris Collections, the collectionGroupKey of the page should be used. For non-Polaris events, encodedFamilyId (for movies and sporting events),\n          encodedSeriesId or a hardcoded value (e.g. account_settings). For video_player pages, the contentId should be passed.\n          should be used.\n          For MLPs, the modalId should be used as the pageKey on modal pages that originate from MLP modal links (when pageName is mlp_modal)."
+          },
+          "containerType": {
+            "$ref": "#/components/schemas/ContainerType"
+          },
+          "interactionId": {
+            "type": "string"
+          },
+          "sourceStream": {
+            "$ref": "#/components/schemas/SourceStream"
+          },
+          "dataVersion": {
+            "type": "string",
+            "description": "Schema version of the data payload"
+          },
+          "eventId": {
+            "type": "string",
+            "description": "Event id as UUID"
+          },
+          "viewingEnvironment": {
+            "type": "string",
+            "description": "Viewing environments are 360 degree immersive spaces that transport the user into a full screen disney experience. For MVP launch we will have five brand-specific Viewing Environments backdrops: Disney, Star Wars, Marvel, Pixar, National Geographic.\n\n                How will this field be provided?\n                By client \u003e SDK \u003e Glimpse \u003e Viewport\n\n                ex. disney, star_wars, marvel, pixar, nat_geo, default"
+          }
+        }
+      }
+    }
+  }
+}
