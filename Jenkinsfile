@@ -1,7 +1,6 @@
 #!/usr/bin/env groovy
 
 def DOCKER_IMG='mysql:latest'
-def DOCKER_IMG_NAME= 'main';
 node {
 
     try {
@@ -20,12 +19,6 @@ node {
             "docker pull ${env.docker_img}"
             }
         }
-        stage('Publish') {
-            git.withCredentials([
-                usernamePassword(credentialsId: 'github-creds-schemareg', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASSWORD')]) {
-                  sh 'GITHUB_TOKEN="${GIT_USER}:${GIT_PASSWORD}"'
-                }
-            }
 
     }
     catch (e) {
