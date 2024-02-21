@@ -14,9 +14,11 @@ node {
             echo "second stage pass"
         }
         stage("docker-pull"){
+            script{
             env.docker_img = "${DOCKER_IMG}"
             echo "${env.docker_img}"
-            sh "docker pull ${env.docker_img}"
+            "docker pull ${env.docker_img}"
+            }
         }
 
     }
