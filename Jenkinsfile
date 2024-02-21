@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def DOCKER_IMG='artifactory.prod.hulu.com/hulu-docker/telemetry/tlmt-utils-cli/tlmt-utils-cli'
+def DOCKER_IMG='mysql:latest'
 def DOCKER_IMG_NAME= 'main';
 node {
 
@@ -14,7 +14,8 @@ node {
             echo "second stage pass"
         }
         stage("docker-pull"){
-            env.docker_img = "${DOCKER_IMG}:${DOCKER_IMG_NAME}"
+            env.docker_img = "${DOCKER_IMG}"
+            echo "${env.docker_img}"
             sh "docker pull ${env.docker_img}"
         }
 
