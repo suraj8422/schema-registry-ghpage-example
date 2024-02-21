@@ -9,15 +9,15 @@ node {
             checkout scm
             echo "first stage pass"
         }
-        stage("second stage ") {
-            echo "second stage pass"
-        }
+        
         stage("docker-pull"){
-            script{
             env.docker_img = "${DOCKER_IMG}"
             echo "${env.docker_img}"
-            "docker pull ${env.docker_img}"
-            }
+            sh "docker pull ${env.docker_img}"
+        }
+          stage("docker-run"){
+            def test = sh "docker pull ${DOCKER_IMG}"
+            echo "${test}"
         }
 
     }
