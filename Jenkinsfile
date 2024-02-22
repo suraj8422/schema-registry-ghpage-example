@@ -19,6 +19,7 @@ node {
             println ("all files commited:" + files)
             def files = findFiles glob: '**/*.json'
             sh "ls"
+            echo "${env.WORKSPACE}"
             for (def i=0; i<files.length; i++) {
                 jsonFilePath = "${files[i].path}"       
                 jsonPath = "${env.WORKSPACE}" + "/" + jsonFilePath
