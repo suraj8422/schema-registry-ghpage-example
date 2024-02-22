@@ -8,6 +8,12 @@ node {
             checkout scm
             echo "first stage pass"
         }
+        stage('Initialize'){
+          def dockerHome = tool 'my-docker'
+          echo "${dockerHome}"
+          env.PATH = "${dockerHome}/bin:${env.PATH}"
+          echo "${env.PATH}"
+         }
 
         stage("docker-pull") {
             def imgName = docker.image("mysql:latest")
