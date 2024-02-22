@@ -1,41 +1,28 @@
 #!/usr/bin/env groovy
 
-def DOCKER_IMG='mysql:latest'
 node {
 
     try {
-        stage("checkout-${env.BRANCH_NAME}") {
+        stage("checkout") {
             cleanWs()
             checkout scm
             echo "first stage pass"
         }
-        
-        stage("docker-pull"){
-            env.docker_img = "${DOCKER_IMG}"
-            echo "${env.docker_img}"
-        }
-          stage("docker-run"){
-           docker.image('mysql:8-oracle').withRun('-e "MYSQL_ROOT_PASSWORD=my-secret-pw"') { c ->
-               docker.image('mysql:8-oracle').inside("--link ${c.id}:db") {
-            /* Wait until mysql service is up */
-               sh 'while ! mysqladmin ping -hdb --silent; do sleep 1; done'
-           }
-            docker.image('oraclelinux:9').inside("--link ${c.id}:db") {
-            /*
-             * Run some tests that require MySQL, and assume that it is
-             * available on the host name `db`
-             */
-            sh 'make check'
-           }
-    }
-        }
 
+        stage("docker-pull") {
+            def imgName = docker.image("mysql:latest")
+            echo "imgName---${imgName}"
+        }
+        stage("build artifact and publish to github pages") {
+
+            sh "docker build -f Dockerfile -t redoc ."
+            sh "docker run --rm -v $PWD:/spec redoc redocly build-docs /spec/schema-registry-tlmt-viewport.json -o /spec/index.html"
+            sh 'git add index.html'
+            sh git diff-index --quiet HEAD || git commit -m 'updated gh-pages [ci skip]'
+            sh git push origin gh-pages
+        }
     }
     catch (e) {
-        stage("Report failure") {
-            echo "Build failed, Exception: ${e}"
-        }
         throw e
     }
-
 }
