@@ -15,9 +15,9 @@ node {
         }
         stage("build artifact and publish to github pages") {
          script{
-            "docker build -f Dockerfile -t redoc ."
-            "docker run --rm -v $PWD:/spec redoc redocly build-docs /spec/schema-registry-tlmt-viewport.json -o /spec/index.html"
-            'git add index.html'
+            docker build -f Dockerfile -t redoc .
+            docker run --rm -v /spec redoc redocly build-docs /spec/schema-registry-tlmt-viewport.json -o /spec/index.html
+            git add index.html
             git diff-index --quiet HEAD || git commit -m 'updated gh-pages [ci skip]'
             git push origin gh-pages
          }
