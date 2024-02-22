@@ -1,5 +1,8 @@
 #!/usr/bin/env groovy
 
+import jenkins.model.*
+import hudson.model.*
+
 node {
 
     try {
@@ -17,10 +20,12 @@ node {
             sh 'docker build -f Dockerfile -t redoc .'
             String files = sh(script: "find . -name '*.json'", returnStdout:true).trim()    
             println ("all files:" + files)
-            sh "ls"
-            def workspace = pwd()
-            echo "workspace----${workspace}" 
-            echo "${files[0].path}"
+            //sh "ls"
+            def job_path = "${new File(files).parent}"
+            echo "${job_path}"
+            echo "${context.WORKSPACE}"
+   
+           // echo "${files[0].path}"
             
             //for (def i=0; i<files.length; i++) {
                 jsonFilePath = "${files[1].path}"
