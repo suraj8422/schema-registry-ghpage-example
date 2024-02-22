@@ -15,13 +15,13 @@ node {
         stage("build artifact and publish to github pages") {
       
             sh 'docker build -f Dockerfile -t redoc .'
-            def files = sh(script: "find . -name '*.json'", returnStdout:true).trim()    
-            //def files = findFiles glob: '**/*.json'
-            println ("all files commited:" + files)
+            String files = sh(script: "find . -name '*.json'", returnStdout:true).trim()    
+            println ("all files:" + files)
             sh "ls"
             def workspace = pwd()
-            echo "${files[0].path}"
             echo "workspace----${workspace}" 
+            echo "${files[0].path}"
+            
             //for (def i=0; i<files.length; i++) {
                 jsonFilePath = "${files[1].path}"
                 echo jsonFilePath
