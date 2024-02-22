@@ -21,11 +21,7 @@ node {
             String files = sh(script: "find . -name '*.json'", returnStdout:true).trim()    
             println ("all files:" + files)
             //sh "ls"
-    
-            echo "${context.WORKSPACE}"
-
             sh 'docker run --rm redocly/cli build-docs ./schema-registry-tlmt-viewport.json -o index.html'
-         
         }
     }
     catch (e) {
