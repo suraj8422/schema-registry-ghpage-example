@@ -17,7 +17,7 @@ node {
             sh 'docker build -f Dockerfile -t redoc .'
             def files = sh(script: "find . -name '*.json'", returnStdout:true).trim()    
             println ("all files commited:" + files)
-            def files = findFiles glob: '**/*.json'
+            //def files = findFiles glob: '**/*.json'
             sh "ls"
             echo "${env.WORKSPACE}"
             for (def i=0; i<files.length; i++) {
