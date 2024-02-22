@@ -15,13 +15,11 @@ node {
         stage("build artifact and publish to github pages") {
       
             sh 'docker build -f Dockerfile -t redoc .'
-            def filesCommitted = sh(script:'git diff --name-only HEAD^', returnStdout:true)
             def files = sh(script: "find . -name '*.json'", returnStdout:true)    
-            println ("new files commited:" + filesCommitted)
             println ("all files commited:" + files)
             sh "pwd"
             sh "ls"
-            sh 'docker run --rm redocly/cli build-docs ./schema-registry-tlmt-viewport.json -o index.html'
+            sh '$ docker run --rm -v pwd:/spec redocly/cli build-docs files -o index.html'
             sh 'git add index.html'
             sh git diff-index --quiet HEAD || git commit -m 'updated gh-pages [ci skip]'
             git push origin gh-pages
