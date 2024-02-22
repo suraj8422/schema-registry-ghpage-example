@@ -15,9 +15,9 @@ node {
         stage("build artifact and publish to github pages") {
       
             sh 'docker build -f Dockerfile -t redoc .'
-            def files = sh(script: "find . -name '*.json'", returnStdout:true).trim()    
+            //def files = sh(script: "find . -name '*.json'", returnStdout:true).trim()    
+            def files = findFiles glob: '**/*.json'
             println ("all files commited:" + files)
-            //def files = findFiles glob: '**/*.json'
             sh "ls"
             for (def i=0; i<files.length; i++) {
                 jsonFilePath = "${files[i].path}"
