@@ -21,23 +21,10 @@ node {
             String files = sh(script: "find . -name '*.json'", returnStdout:true).trim()    
             println ("all files:" + files)
             //sh "ls"
-            def job_path = "${new File(files).parent}"
-            echo "${job_path}"
+    
             echo "${context.WORKSPACE}"
-   
-           // echo "${files[0].path}"
-            
-            //for (def i=0; i<files.length; i++) {
-                jsonFilePath = "${files[1].path}"
-                echo jsonFilePath
-                jsonPath = "${env.WORKSPACE}" + "/" + jsonFilePath
-                echo jsonPath
-            //}
-          
+
             sh 'docker run --rm redocly/cli build-docs ./schema-registry-tlmt-viewport.json -o index.html'
-            sh 'git add index.html'
-            sh git diff-index --quiet HEAD || git commit -m 'updated gh-pages [ci skip]'
-            git push origin gh-pages
          
         }
     }
