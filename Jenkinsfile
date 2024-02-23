@@ -9,20 +9,25 @@ node {
             cleanWs()
             checkout scm
         }
+         stage("docker -pull") {
+            def res = sh(
+                    script: """
+                         docker pull ${DOCKER_IMG}
+                    """,
+                    returnStdout: true
+            )
+        }
+        
         stage("build artifact") {
 
             def output = sh(
                     script: """
-                         docker run --rm --privileged -v $PWD:/spec ${DOCKER_IMG} -o /spec/index.html
+                         docker run --rm --privileged -v ${pwd()}:/spec ${DOCKER_IMG} -o /spec/index.html
                     """,
                     returnStdout: true
             )
 
             echo "result---${output}"
-
-            sh "ls -la $PWD"
-
-            sh "ls -la ${pwd()}"
 
             sh "git add index.html"
 
