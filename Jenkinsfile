@@ -1,30 +1,36 @@
 #!/usr/bin/env groovy
 
-import jenkins.model.*
-import hudson.model.*
+def DOCKER_IMG = 'artifactory.prod.hulu.com/hulu-docker/telemetry/smithy-to-openapi/smithy-to-openapi:main'
 
 node {
 
     try {
-        stage("checkout") {
+        stage("Checkout") {
             cleanWs()
             checkout scm
-            echo "first stage pass"
         }
-        stage("docker-pull") {
-            def imgName = docker.image("mysql:latest")
-            echo "imgName---${imgName}"
-        }
-        stage("build artifact and publish to github pages") {
-      
-            sh 'docker build -f Dockerfile -t redoc .'
-            String files = sh(script: "find . -name '*.json'", returnStdout:true).trim()    
-            println ("all files:" + files)
-            //sh "ls"
-            sh 'docker run --rm redocly/cli build-docs ./schema-registry-tlmt-viewport.json -o index.html'
+        stage("build artifact") {
+
+            def output = sh(
+                    script: """
+                         docker run --rm --privileged -v $PWD:/spec ${DOCKER_IMG} -o /spec/index.html
+                    """,
+                    returnStdout: true
+            )
+
+            echo "result---${output}"
+
+            sh "ls -la $PWD"
+
+            sh "ls -la ${pwd()}"
+
+            sh "git add index.html"
+
+            sh "git diff-index --quiet HEAD || git commit -m 'updated index.html into github repo'"
+            sh "git push origin main"
         }
     }
     catch (e) {
-        throw e
+        throw e as java.lang.Throwable
     }
 }
