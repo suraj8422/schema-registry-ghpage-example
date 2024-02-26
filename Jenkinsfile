@@ -18,7 +18,7 @@ node {
                     returnStdout: true
             )
 
-            echo "result---${output}
+            echo "result---${output}"
 
             sh "ls -la ${pwd()}"
   
