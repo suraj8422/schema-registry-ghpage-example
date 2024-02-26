@@ -5,11 +5,11 @@ readonly repo='jenkins-pipeline-test'
 readonly cwd=$(pwd)
 echo $cwd
 echo $PWD
-readonly repoDir="$(pwd)/gh-pages"
+readonly repoDir=$(pwd)/gh-pages
 rm -rf $repoDir
 mkdir -p $repoDir
 
-git clone -b gh-pages "https://$GITHUB_TOKEN@github.prod.hulu.com/suraj-bhan/$repo" $repoDir
+git clone -b gh-pages "https://$GITHUB_TOKEN@github.com/suraj8422/schema-registry-ghpage-example/$repo" $repoDir
 cd $repoDir
 echo $(pwd)
 echo $PWD
