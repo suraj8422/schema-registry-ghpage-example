@@ -3,7 +3,7 @@
 node {
 
     try {
-        stage("Code checkout-"${env.BRANCH_NAME}) {
+        stage("Code checkout") {
             cleanWs()
             checkout scm
         }
