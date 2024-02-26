@@ -1,23 +1,18 @@
 #!/usr/bin/env groovy
 
-def DOCKER_IMG = 'artifactory.prod.hulu.com/hulu-docker/telemetry/smithy-to-openapi/smithy-to-openapi:main'
-
 node {
 
     try {
-        stage("Checkout") {
+        stage("Code checkout-"${env.BRANCH_NAME}) {
             cleanWs()
             checkout scm
         }
-        stage("build artifact") {
-              //sh "ls -la ${pwd()}"
-            def output = sh(script: """docker run --rm --privileged -v ${pwd()}:/spec ${DOCKER_IMG} -o /spec/index.html""",
-                    returnStdout: true
-            )
+        stage("Build and publish artifact") {
+            echo "${env.JENKINS_HOME}"
 
-            echo "result---${output}"
-
-            //sh "ls -la ${pwd()}"
+            withCredentials([usernamePassword(credentialsId: 'github-admin-readonly', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                sh 'GITHUB_TOKEN="${GIT_USERNAME}:${GIT_PASSWORD}" ./scripts/publish-site.sh'
+            }
         }
     }
     catch (e) {
