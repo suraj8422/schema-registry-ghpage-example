@@ -10,8 +10,8 @@ node {
         stage("Build and publish artifact") {
             echo "${env.JENKINS_HOME}"
 
-            withCredentials([usernamePassword(credentialsId: 'github-admin-readonly', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-                sh 'GITHUB_TOKEN="${GIT_USERNAME}:${GIT_PASSWORD}" ./scripts/publish-site.sh'
+            withCredentials([usernamePassword(credentialsId: 'c8c127e3-7a9a-415f-8e4f-76448b0301ca', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                sh 'GITHUB_TOKEN="bhansuraj196@gmail.com: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" ./scripts/publish-site.sh'
             }
         }
     }
