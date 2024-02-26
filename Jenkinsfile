@@ -10,24 +10,21 @@ node {
             checkout scm
         }
         stage("build artifact") {
-
+              sh "ls -la ${pwd()}"
             def output = sh(
                     script: """
-                         docker run --rm --privileged -v $PWD:/spec ${DOCKER_IMG} -o /spec/index.html
+                         docker run --rm --privileged -v ${pwd()}:/spec ${DOCKER_IMG} -o /spec/index.html
                     """,
                     returnStdout: true
             )
 
-            echo "result---${output}"
-
-            sh "ls -la $PWD"
-            sh "ls / -l $PWD"
+            echo "result---${output}
 
             sh "ls -la ${pwd()}"
   
             withCredentials([usernamePassword(credentialsId: 'github-admin-readonly', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 //sh 'git checkout -b gh-pages'
-                sh 'git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.prod.hulu.com/suraj-bhan/jenkins-pipeline-test.git'
+                //sh 'git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.prod.hulu.com/suraj-bhan/jenkins-pipeline-test.git'
                 //https://github.prod.hulu.com/suraj-bhan/jenkins-pipeline-test.git
                 //sh 'git fetch origin gh-pages:refs/remotes/origin/gh-pages'
                 //sh 'git fetch --all'
