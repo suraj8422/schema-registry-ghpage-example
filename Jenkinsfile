@@ -11,10 +11,7 @@ node {
         }
         stage("build artifact") {
               //sh "ls -la ${pwd()}"
-            def output = sh(
-                    script: """
-                         docker run --rm --privileged -v ${pwd()}:/spec ${DOCKER_IMG} -o /spec/index.html
-                    """,
+            def output = sh(script: """docker run --rm --privileged -v ${pwd()}:/spec ${DOCKER_IMG} -o /spec/index.html""",
                     returnStdout: true
             )
 
