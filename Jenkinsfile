@@ -11,11 +11,10 @@ node {
             echo "${env.JENKINS_HOME}"
 
             def schemaNames = ["schema-registry-tlmt-pq","schema-registry-tlmt-viewport"]
-            echo "$schemaNames"
             print schemaNames
 
             withCredentials([gitUsernamePassword(credentialsId: 'c8c127e3-7a9a-415f-8e4f-76448b0301ca', gitToolName: 'Default')]) {
-                sh 'SCHEMA_NAMES="$schemaNames" ./scripts/publish-site.sh'
+                sh 'SCHEMA_NAMES="${schemaNames}" GITHUB_TOKEN="bhansuraj196@gmail.com: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" ./scripts/publish-site.sh'
             }
             
           /*  withCredentials([usernamePassword(credentialsId: 'c8c127e3-7a9a-415f-8e4f-76448b0301ca', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
