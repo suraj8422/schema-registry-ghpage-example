@@ -4,8 +4,10 @@ set -euo pipefail
 readonly repo='jenkins-pipeline-test'
 
 echo $PWD
+echo $SCHEMA_NAMES
 
-readonly schema= readYaml file: 'schema.yml'
+schema= readYaml file: 'schema.yml'
+
 echo $SCHEMA_NAMES
 echo "${schema}"
 

@@ -13,6 +13,8 @@ node {
             def schemaNames = ["schema-registry-tlmt-pq","schema-registry-tlmt-viewport"]
             print schemaNames
             echo "${schemaNames}"
+            SCHEMA_NAMES="${schemaNames}"
+            echo "${SCHEMA_NAMES}"
 
             withCredentials([gitUsernamePassword(credentialsId: 'c8c127e3-7a9a-415f-8e4f-76448b0301ca', gitToolName: 'Default')]) {
                 sh 'SCHEMA_NAMES="${schemaNames}" ./scripts/publish-site.sh'
