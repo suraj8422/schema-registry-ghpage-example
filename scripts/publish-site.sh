@@ -5,12 +5,15 @@ readonly repo='jenkins-pipeline-test'
 
 echo $PWD
 
+def schema = readYaml file: 'schema.yml'
+echo "${schema}"
+
 readonly repoDir=$(pwd)/gh-pages
 rm -rf $repoDir
 mkdir -p $repoDir
 echo $SCHEMA_NAMES
 
-echo "${schemaNames}"
+echo "${SCHEMA_NAMES}"
 
 #git clone -b gh-pages "https://$GITHUB_TOKEN@github.com/suraj8422/schema-registry-ghpage-example/$repo" $repoDir
 #cd $repoDir
