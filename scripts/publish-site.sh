@@ -5,13 +5,14 @@ readonly repo='jenkins-pipeline-test'
 
 echo $PWD
 
-def schema = readYaml file: 'schema.yml'
+readonly schema= readYaml file: 'schema.yml'
+echo $SCHEMA_NAMES
 echo "${schema}"
 
 readonly repoDir=$(pwd)/gh-pages
 rm -rf $repoDir
 mkdir -p $repoDir
-echo $SCHEMA_NAMES
+
 
 echo "${SCHEMA_NAMES}"
 
