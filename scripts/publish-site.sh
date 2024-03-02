@@ -6,8 +6,8 @@ readonly repo='jenkins-pipeline-test'
 echo $PWD
 
 readonly cwd=$(pwd)
-ls cwd
-ls -la cwd
+ls $cwd
+ls -la $cwd
 
 readonly filePath= $(pwd)/'schema.yml'
 echo $filePath
