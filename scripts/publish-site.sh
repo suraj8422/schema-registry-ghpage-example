@@ -6,15 +6,13 @@ readonly repo='jenkins-pipeline-test'
 echo $PWD
 
 readonly cwd=$(pwd)
-ls $cwd
-ls -la $cwd
 
-readonly filePath= $(pwd)/'schema.yml'
+readonly filePath= $(pwd)+'/'+'schema.yml'
 echo $filePath
 
 echo $SCHEMA_NAMES
 
-schema= readYaml file: filePath
+schema=readYaml file: filePath
 
 echo $SCHEMA_NAMES
 echo "${schema}"
