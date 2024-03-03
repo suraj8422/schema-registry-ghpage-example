@@ -14,7 +14,7 @@ node {
             print schemaNames
             echo "${schemaNames}"
 
-            withCredentials([gitUsernamePassword(credentialsId: 'github-user', gitToolName: 'Default')]) {
+            withCredentials([gitUsernamePassword(credentialsId: 'c8c127e3-7a9a-415f-8e4f-76448b0301ca', gitToolName: 'Default')]) {
                 sh 'SCHEMAS="${schemaNames}" ./scripts/publish-site.sh'
             }
 
