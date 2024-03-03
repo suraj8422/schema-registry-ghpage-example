@@ -15,10 +15,11 @@ node {
             echo "${schemaNames}"
 
             withCredentials([gitUsernamePassword(credentialsId: 'c8c127e3-7a9a-415f-8e4f-76448b0301ca', gitToolName: 'Default')]) {
-                //sh 'SCHEMAS="${schemaNames}" ./scripts/publish-site.sh"'
-                String output = sh(script: "SCHEMAS=${schemaNames} ./scripts/publish-site.sh",
+                sh "SCHEMAS=${schemaNames} ./scripts/publish-site.sh"
+
+               /* String output = sh(script: "SCHEMAS=${schemaNames} ./scripts/publish-site.sh",
                         returnStdout: true)
-                echo "${output}"
+                echo "${output}"*/
             }
 
 
