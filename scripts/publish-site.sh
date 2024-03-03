@@ -5,11 +5,11 @@ readonly repo='jenkins-pipeline-test'
 
 echo $PWD
 echo "ls -a ${PWD}"
+echo "SCHEMAS----->${SCHEMAS}"
 
 for schemaName in "${SCHEMAS[@]}"
 do
     echo "Generating html schema documentation for: $schemaName"
-    echo "<li><a href=\"$schemaName.html\">$schemaName</a></li>" >> /spec/index.html
 done
 
 #schema=readYaml file: 'schema.yml'
@@ -19,9 +19,6 @@ done
 readonly repoDir=$(pwd)/gh-pages
 rm -rf $repoDir
 mkdir -p $repoDir
-
-
-echo "${SCHEMAS}"
 
 #git clone -b gh-pages "https://$GITHUB_TOKEN@github.com/suraj8422/schema-registry-ghpage-example/$repo" $repoDir
 #cd $repoDir
