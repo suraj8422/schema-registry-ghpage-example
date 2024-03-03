@@ -1,15 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 
-wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
-
 readonly repo='jenkins-pipeline-test'
 
 echo $PWD
 echo "ls -a ${PWD}"
 
-schema_list=$( yq eval '.schemaNames|length' schema.yml )
-echo "Length---${schema_list}"
+schema=readYaml file: 'schema.yml'
+#schema_list=$( yq eval '.schemaNames|length' schema.yml )
+echo "Length---${schema}"
 
 readonly repoDir=$(pwd)/gh-pages
 rm -rf $repoDir
