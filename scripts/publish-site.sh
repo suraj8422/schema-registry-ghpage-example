@@ -6,7 +6,8 @@ readonly repo='jenkins-pipeline-test'
 echo $PWD
 echo "ls -a ${PWD}"
 
-echo "SCHEMAS----{$SCHEMAS}"
+schema_list=$( yq eval '.schemaNames|length' schema.yml )
+echo "Length---${schema_list}"
 
 readonly repoDir=$(pwd)/gh-pages
 rm -rf $repoDir
