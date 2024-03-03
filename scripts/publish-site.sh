@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+pip install yq
 
 readonly repo='jenkins-pipeline-test'
 
