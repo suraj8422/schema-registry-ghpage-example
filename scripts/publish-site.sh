@@ -2,15 +2,14 @@
 set -euo pipefail
 
 readonly repo='jenkins-pipeline-test'
+sudo apt-get install yq -y
 
 echo $PWD
 echo "ls -a ${PWD}"
-echo "SCHEMAS----->${SCHEMAS}"
 
-for schemaName in "${SCHEMAS[@]}"
-do
-    echo "Generating html schema documentation for: $schemaName"
-done
+number_of_paths=$( yq eval '.paths|length' schema.yml )
+
+
 
 #schema=readYaml file: 'schema.yml'
 #schema_list=$( yq eval '.schemaNames|length' schema.yml )
