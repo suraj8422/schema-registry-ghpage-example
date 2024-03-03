@@ -2,7 +2,7 @@
 set -euo pipefail
 
 readonly repo='jenkins-pipeline-test'
-sudo apt-get install yq -y
+apt-get install yq -y
 
 echo $PWD
 echo "ls -a ${PWD}"
