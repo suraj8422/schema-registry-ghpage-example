@@ -7,7 +7,6 @@ echo $PWD
 echo "ls -a ${PWD}"
 
 echo "SCHEMAS----{$SCHEMAS}"
-echo "SCHEMA----{$SCHEMA}"
 
 readonly repoDir=$(pwd)/gh-pages
 rm -rf $repoDir
