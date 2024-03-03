@@ -15,7 +15,7 @@ node {
             echo "${schemaNames}"
 
             withCredentials([gitUsernamePassword(credentialsId: 'c8c127e3-7a9a-415f-8e4f-76448b0301ca', gitToolName: 'Default')]) {
-                sh 'SCHEMAS="${schemaNames}" ./scripts/publish-site.sh'
+                sh 'SCHEMAS=schemaNames ./scripts/publish-site.sh'
             }
 
           /*  withCredentials([usernamePassword(credentialsId: 'c8c127e3-7a9a-415f-8e4f-76448b0301ca', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
