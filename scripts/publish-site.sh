@@ -6,9 +6,15 @@ readonly repo='jenkins-pipeline-test'
 echo $PWD
 echo "ls -a ${PWD}"
 
-schema=readYaml file: 'schema.yml'
+for schemaName in "${SCHEMAS[@]}"
+do
+    echo "Generating html schema documentation for: $schemaName"
+    echo "<li><a href=\"$schemaName.html\">$schemaName</a></li>" >> /spec/index.html
+done
+
+#schema=readYaml file: 'schema.yml'
 #schema_list=$( yq eval '.schemaNames|length' schema.yml )
-echo "Length---${schema}"
+#echo "Length---${schema}"
 
 readonly repoDir=$(pwd)/gh-pages
 rm -rf $repoDir
