@@ -6,9 +6,7 @@ readonly repo='jenkins-pipeline-test'
 echo $PWD
 echo "ls -a ${PWD}"
 
-echo $SCHEMAS
-
-echo "${schemaNames}"
+echo "SCHEMA----{$SCHEMAS}"
 
 readonly repoDir=$(pwd)/gh-pages
 rm -rf $repoDir
