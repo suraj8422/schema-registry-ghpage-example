@@ -5,6 +5,15 @@ readonly repo='jenkins-pipeline-test'
 readonly cwd=$(pwd)
 echo $PWD
 
+# Declare a string array
+array=("element1" "element2" "element3" "element4")
+
+# Iterate over the array and print each element separated by a space
+for element in "${array[@]}"; do
+    echo -n "$element "
+done
+
+
 #awk '$1 == "-"{ if (key == "Fruits:") print $NF; next } {key=$1}' schema.yml
 schema_data=$(sed -En '/:/h;G;s/^- (.*)\nSchemas:/\1/p' schema.yml)
 echo "$schema_data"
