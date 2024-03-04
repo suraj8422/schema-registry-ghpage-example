@@ -6,18 +6,21 @@ readonly cwd=$(pwd)
 echo $PWD
 
 # Declare a string array
-array=("element1" "element2" "element3" "element4")
+schemas=("element1" "element2" "element3" "element4")
 
 # Iterate over the array and print each element separated by a space
-for element in "${array[@]}"; do
+for element in "${schemas[@]}";
+do
     echo -n "$element "
 
-    concatRes+="$element "
-    concatenated+=$(printf "%s " "$element")
+    schemaName+="$element "
 
 done
-echo "$concatRes"
-echo "$concatenated"
+
+echo
+
+echo "$schemaName"
+
 
 #awk '$1 == "-"{ if (key == "Fruits:") print $NF; next } {key=$1}' schema.yml
 schema_data=$(sed -En '/:/h;G;s/^- (.*)\nSchemas:/\1/p' schema.yml)
