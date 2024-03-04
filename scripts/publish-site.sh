@@ -13,10 +13,11 @@ for element in "${array[@]}"; do
     echo -n "$element "
 
     concatRes+="$element "
-
-    concatenated=$(printf "%s " "$element")
+    echo "$concatRes"
+    concatenated+=$(printf "%s " "$element")
     echo "$concatenated"
 done
+echo "$concatRes"
 echo "$concatenated"
 
 #awk '$1 == "-"{ if (key == "Fruits:") print $NF; next } {key=$1}' schema.yml
