@@ -13,9 +13,8 @@ for element in "${array[@]}"; do
     echo -n "$element "
 
     concatRes+="$element "
-    echo "$concatRes"
     concatenated+=$(printf "%s " "$element")
-    echo "$concatenated"
+
 done
 echo "$concatRes"
 echo "$concatenated"
