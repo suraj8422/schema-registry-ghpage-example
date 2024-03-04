@@ -9,7 +9,6 @@ echo $PWD
 array=("element1" "element2" "element3" "element4")
 
 # Iterate over the array and print each element separated by a space
-concatenated= ""
 for element in "${array[@]}"; do
     echo -n "$element "
 
